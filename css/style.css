@@ -1,0 +1,42 @@
+
+* {
+    background-color: #270338;
+}
+
+
+.name-site {
+    color: #FFF;
+    font-size: 82px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+.description {
+    color: #FFF;
+    font-size: 40px;
+    margin: 150px 0px 0px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-weight: 700;
+}
+
+.button-start {
+    background-color: #E4DC23;
+    border-radius: 78px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+
+    font-size: 20px;
+    width: 250px;
+    height: 70px;   
+    margin: 100px auto; /* auto для центрирования по горизонтали */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    
+    
+}
