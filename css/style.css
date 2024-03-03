@@ -42,7 +42,6 @@ body {
 }
 
 
-
 .menu-link {
     color: #1AF8DE;
     font-family: Inter;
@@ -54,7 +53,7 @@ body {
 
 .menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     padding: 0;
@@ -63,8 +62,11 @@ body {
   }
   
   .menu-item {
-    margin: 0;
+    margin-right: 70px;  
   }
+  
+
+
   
 
   .btn-edit {
