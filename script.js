@@ -8,7 +8,7 @@ const btnAddSkill = document.getElementById('btn-add')
 const skills = [
     {
     name: 'Программирование', 
-    hours: 88
+    hours: 88 
     },
     {
     name: 'Спорт',
