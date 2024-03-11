@@ -1,6 +1,8 @@
 
 body {
     /* background-color: #270338; */
+    font-family: 'Inter', sans-serif;
+    color: #fff;
     background-color: #0C1C2B;
 }
 
@@ -180,4 +182,13 @@ body {
     color: #29B6F6;
 }
 
+.table-dark {
+    position: absolute;
+    top: 60%;
+    left: 1%;
+    width: 50%;
+}
 
+.table-dark__name {
+    color: #fff;
+}
