@@ -23,6 +23,11 @@
         <div class="name-site">
             Skill time tracker
         </div>
+
+        <div class="heading">
+            <h1 id="headname">Главная</h1>
+        </div>
+
         <div class="container">
             <nav class="nav">
                 <ul class="menu">
@@ -30,16 +35,16 @@
                         <a href="index.html" class="menu-link">Главная</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Аккаунт</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Аккаунт')">Аккаунт</a>
                     </li>
                     <li class="menu-item">
-                        <a href="./skills-page.html" class="menu-link">Мои навыки</a>
+                        <a href="./skills-page.html" class="menu-link" onclick="changeHeader('Мои навыки')">Мои навыки</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Статистика</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Статистика')">Статистика</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">О нас</a>
+                        <a href="./aboutus.html" class="menu-link" onclick="changeHeader('О нас')">О нас</a>
                     </li>
                 </ul>          
             </nav>
@@ -47,10 +52,8 @@
     </header>
 
 
-    <main class="main">
-
+    <main id="about-us">
         <img class="bg" src="./img/bg.jpg" alt="">
-     
         <table class="table table-dark" style="table-layout: fixed;">
             <caption class="table-dark__name">Список разработчиков</caption>
             <thead>
@@ -76,8 +79,6 @@
               </tr>
             </tbody>
           </table>
-
-       
     </main>
 
     <footer class="footer">
@@ -88,6 +89,7 @@
              </a>
         </div>
     </footer>
+    <script src="./js/script.js" defer></script>
     
 </body>
 </html>

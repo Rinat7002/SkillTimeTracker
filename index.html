@@ -18,6 +18,10 @@
             Skill time tracker
         </div>
 
+        <div class="heading">
+            <h1 id="headname">Главная</h1>
+        </div>
+
         <div class="container">
             <nav class="nav">
                 <ul class="menu">
@@ -25,33 +29,34 @@
                         <a href="index.html" class="menu-link">Главная</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Аккаунт</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Аккаунт')">Аккаунт</a>
                     </li>
                     <li class="menu-item">
-                        <a href="./skills-page.html" class="menu-link">Мои навыки</a>
+                        <a href="./skills-page.html" class="menu-link" onclick="changeHeader('Мои навыки')">Мои навыки</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Статистика</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Статистика')">Статистика</a>
                     </li>
                     <li class="menu-item">
-                        <a href="./aboutus.html" class="menu-link">О нас</a>
+                        <a href="./aboutus.html" class="menu-link" onclick="changeHeader('О нас')">О нас</a>
                     </li>
                 </ul>          
             </nav>
         </div>
+
     </header>
 
+    
 
-    <main class="main">
+
+    <main class="main" id="general">
         <img class="bg" src="./img/bg.jpg" alt="">
-
         <section class="main__desc">
             <div class="description">Трекер навыков - это сайт, который поможет отслеживать количество часов, 
                 потраченных на ваши навыки, дела, хобби и прочие действия. </div>
             
             <a class="button-start" href="./skills-page.html">Начать отслеживать</a>   
         </section> 
-    
     </main>
 
     <footer class="footer">
@@ -63,6 +68,6 @@
              </a>
         </div>
     </footer>
-    
+    <script src="./js/script.js" defer></script> 
 </body>
 </html>

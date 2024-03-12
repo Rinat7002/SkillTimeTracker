@@ -23,6 +23,10 @@
             Skill time tracker
         </div>
 
+        <div class="heading">
+            <h1 id="headname">Главная</h1>
+        </div>
+
         <div class="container">
             <nav class="nav">
                 <ul class="menu">
@@ -30,16 +34,16 @@
                         <a href="index.html" class="menu-link">Главная</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Аккаунт</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Аккаунт')">Аккаунт</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Мои навыки</a>
+                        <a href="./skills-page.html" class="menu-link" onclick="changeHeader('Мои навыки')">Мои навыки</a>
                     </li>
                     <li class="menu-item">
-                        <a href="#" class="menu-link">Статистика</a>
+                        <a href="#" class="menu-link" onclick="changeHeader('Статистика')">Статистика</a>
                     </li>
                     <li class="menu-item">
-                        <a href="./aboutus.html" class="menu-link">О нас</a>
+                        <a href="./aboutus.html" class="menu-link" onclick="changeHeader('О нас')">О нас</a>
                     </li>
                 </ul>          
             </nav>
@@ -47,13 +51,10 @@
 
     </header>
 
-    <main class="main">
-
+    <main id="my-skills">
         <div class="section-skills">
-
             <div class="container">
                 <button class="btn-edit">Редактировать</button>
-
                 <div class="list-s">
                     <div class="list-skills">
                         Список навыков
@@ -65,32 +66,25 @@
                         Мини статистика
                     </div>
                 </div>
-
                 <div class="input-skill">
                     <input class="input-skill-name" id="input-skill" type="text" placeholder="Название навыка">
                     <input class="input-skill-hour" id="input-hours" type="text" placeholder="Количество имеющихся часов">
                     <button class="btn-add-skill" id="btn-add">Добавить навык</button>
                 </div>
-
                 <ul class="list-group" id="list">
-
                 </ul>
-
             </div>
-
-            
-
         </div>
-        <footer class="footer">
-            <div class="link">
-    
-                <a class="link__tg" href="https://t.me/Wizard700" target="_blank">
-                    <span class="link__tg-item">Developed by: @Wizard700</span>
-                    <img class="link__tg-img" src="/img/tg.svg" alt="">
-                 </a>
-            </div>
-        </footer>
     </main>
-    <script src="script.js" defer></script>
+    <footer class="footer">
+        <div class="link">
+
+            <a class="link__tg" href="https://t.me/Wizard700" target="_blank">
+                <span class="link__tg-item">Developed by: @Wizard700</span>
+                <img class="link__tg-img" src="/img/tg.svg" alt="">
+             </a>
+        </div>
+    </footer>
+    <script src="./js/script_skill_page.js" defer></script>
 </body>
 </html>

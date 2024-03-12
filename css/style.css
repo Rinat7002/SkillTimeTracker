@@ -93,11 +93,11 @@ body {
     margin-right: 70px;  
   }
   
-
+/* 
 .menu-link:hover {
     color: #A3FF00;
 }
-  
+   */
 
   .btn-edit {
     background-color: #E4DC23;
@@ -167,9 +167,9 @@ body {
     display: flex;
     align-items: center;
     text-decoration: none;
-    position: absolute;
+    /* position: absolute;
     top: 95%;
-    left: 1%
+    left: 1% */
 }
 
 .link__tg-item {
@@ -193,3 +193,7 @@ body {
     color: #fff;
 }
 
+#headname {
+    background-color: #68A500;
+    padding-left: 10px;
+}
