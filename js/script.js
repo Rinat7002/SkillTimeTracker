@@ -31,7 +31,7 @@ switch(main_id) {
 // alert(menuelem.firstChild.innerHTML);/
 
 headtext.innerHTML = menuelem.textContent;
-menuelem.classList.add("active");
+// menuelem.classList.add("active");
 // alert(headtext.innerHTML);
 
 for (i = 0; i < navlist.length; i++) {
@@ -39,16 +39,34 @@ for (i = 0; i < navlist.length; i++) {
 }
 
 
+// $(document).ready(function() {
+//     $(".menu li").mouseenter(function () {
+//         $(this).addClass("active");
+//         $(this).find('a').addClass("active");
+//     }).mouseleave(function () {
+//         $(this).removeClass("active");
+//         $(this).find('a').removeClass("active");
+//     });
+// });
+
+
 $(document).ready(function() {
     $(".menu li").mouseenter(function () {
         $(this).addClass("active");
         $(this).find('a').addClass("active");
     }).mouseleave(function () {
-        $(this).removeClass("active");
-        $(this).find('a').removeClass("active");
+        var pageTitle = menuelem.textContent.replace(/^\s+|\s+$/g, ''); // Получаем название текущей страницы
+        var menuItemName = $(this).find('a').text(); // Получаем название элемента меню, соответствующего текущему
+		// alert(pageTitle);
+		// console.log(pageTitle);
+		// console.log(menuItemName);
+		// console.log(menuItemName == pageTitle);
+
+        if (menuItemName !== pageTitle) {
+            $(this).removeClass("active");
+            $(this).find('a').removeClass("active");
+        }
     });
 });
-
-
 
 
