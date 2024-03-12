@@ -31,9 +31,24 @@ switch(main_id) {
 // alert(menuelem.firstChild.innerHTML);/
 
 headtext.innerHTML = menuelem.textContent;
-// menuelem.classList.add("active");
+menuelem.classList.add("active");
 // alert(headtext.innerHTML);
 
 for (i = 0; i < navlist.length; i++) {
 	if (navlist[i].innerHTML) alerttext += navlist[i].innerHTML + "\n";
 }
+
+
+$(document).ready(function() {
+    $(".menu li").mouseenter(function () {
+        $(this).addClass("active");
+        $(this).find('a').addClass("active");
+    }).mouseleave(function () {
+        $(this).removeClass("active");
+        $(this).find('a').removeClass("active");
+    });
+});
+
+
+
+

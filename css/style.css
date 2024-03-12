@@ -99,7 +99,18 @@ body {
 }
    */
 
-  .btn-edit {
+
+/* .menu li.active {
+    background-color: #f0f0f0; 
+} */
+
+
+.menu a.active {
+    color: #E4DC23;
+}
+
+
+.btn-edit {
     background-color: #E4DC23;
     border-radius: 78px;
     font-family: 'Inter', sans-serif;
