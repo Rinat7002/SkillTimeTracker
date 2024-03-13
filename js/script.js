@@ -57,3 +57,53 @@ $(document).ready(function() {
 });
 
 
+function formSubmit(formelem) {
+	let fname = document.getElementsByName("fname")[0].value;
+	// console.log(fname);
+	var alerttext = `${fname}, ваш запрос отправлен.`;
+	alert(alerttext);
+	}
+
+$(document).ready(function() {
+	$(".hidebox p").hide();
+	// $(".hidebox h3").css("background-color", "#29c5e6");
+});
+$(".hidebox h3").click(function () {
+	$(this).next("p").hide("slow");
+	$(this).css("background-color", "#008000");
+	$(this).css("color", "#fff");
+
+});
+$(".hidebox h3").dblclick(function () {
+	$(this).next("p").show("slow");
+	$(this).css("background-color", "#E4DC23");
+	$(this).css("color", "#000000");
+
+});
+
+
+$("figure img").hover(
+    function() {
+        var currentWidth = $(this).width();
+        var currentHeight = $(this).height();
+        
+        var newWidth = currentWidth + currentWidth * 0.03;
+        var newHeight = currentHeight + currentHeight * 0.03;
+
+        $(this).stop().animate({
+            width: newWidth,
+            height: newHeight
+        }, "slow");
+
+    }, function() {
+        var currentWidth = $(this).width();
+        var currentHeight = $(this).height();
+        
+        var newWidth = currentWidth - currentWidth * 0.03;
+        var newHeight = currentHeight - currentHeight * 0.03;
+
+        $(this).stop().animate({
+            width: newWidth,
+            height: newHeight
+        }, "slow");
+    });

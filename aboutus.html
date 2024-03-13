@@ -54,12 +54,14 @@
 
 
     <main id="about-us">
-        <img class="bg" src="./img/bg.jpg" alt="">
-        <table class="table table-dark" style="table-layout: fixed;">
+
+        <figure><img class="bg" src="./img/bg.jpg" alt=""></figure>
+
+        <table id="myTable" class="table table-dark" style="table-layout: fixed;">
             <caption class="table-dark__name">Список разработчиков</caption>
             <thead>
               <tr>
-                <th scope="col">#</th>
+                <th class="th-sort-by-number" onclick="sortTable(0)" scope="col">#</th>
                 <th scope="col">Человек</th>
                 <th scope="col">Должность</th>
                 <th scope="col">Контакты</th>
@@ -80,6 +82,27 @@
               </tr>
             </tbody>
           </table>
+
+
+          <form class="feedback-form" onsubmit="formSubmit(this)">
+            <p>Форма обратной связи</p>
+            <fieldset>
+              <legend>Контактная информация</legend>
+                <label for="fname">Имя <em>*</em></label>
+                <input type="text" name="fname" id="fname"><br>
+                <label for="email">Email <em>*</em></label>
+                <input id="email"><br>
+            </fieldset>
+            <fieldset>
+                <label for="comments">Опишите пожелание или проблему:</label><br>    
+                <textarea id="comments"></textarea>
+            </fieldset>
+          
+            <p><input type="submit" value="Отправить"></p>
+          </form>
+  
+
+
     </main>
 
     <footer class="footer">
@@ -91,6 +114,7 @@
         </div>
     </footer>
     <script src="./js/script.js" defer></script>
-    
+    <script src="./js/sort-table.js"></script>
+
 </body>
 </html>

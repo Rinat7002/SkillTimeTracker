@@ -68,6 +68,9 @@ body {
     
 }
 
+.header-why-need {
+    background-color: green;
+}
 
 .menu-link {
     color: #1AF8DE;
@@ -178,13 +181,22 @@ body {
     margin-right: 10px;
 }
 
-.link__tg-item:hover {
+/* .link__tg-item:hover {
     color: #29B6F6;
+} */
+
+.footer {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C55142;
+    padding: 2px;
 }
 
 .table-dark {
     position: absolute;
-    top: 60%;
+    top: 50%;
     left: 1%;
     width: 50%;
 }
@@ -197,3 +209,22 @@ body {
     background-color: #68A500;
     padding-left: 10px;
 }
+
+.feedback-form {
+    /* position: absolute; */
+    /* top: 90%; */
+    margin-top: -280px;
+    margin-left: 30px; 
+    /* left: 20%; */
+    /* scale: 120%; */
+    /* margin: 50px; */
+}
+
+#comments {
+    width: 30%;
+    height: 100px;
+}
+
+.th-sort-by-number {
+    cursor: pointer;
+  }
