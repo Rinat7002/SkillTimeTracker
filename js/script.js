@@ -5,6 +5,7 @@ var headtext = document.getElementById("headname");
 var menuelem;
 var alerttext = "";
 
+//Смена наименования раздела в заголовке H1
 switch(main_id) {
 	case 'general':
 		menuelem = navlist[0];
@@ -30,26 +31,12 @@ switch(main_id) {
 // alert(navlist[2].textContent);
 // alert(menuelem.firstChild.innerHTML);/
 
+//Смена наименования раздела в заголовке H1
 headtext.innerHTML = menuelem.textContent;
 // menuelem.classList.add("active");
 // alert(headtext.innerHTML);
 
-for (i = 0; i < navlist.length; i++) {
-	if (navlist[i].innerHTML) alerttext += navlist[i].innerHTML + "\n";
-}
-
-
-// $(document).ready(function() {
-//     $(".menu li").mouseenter(function () {
-//         $(this).addClass("active");
-//         $(this).find('a').addClass("active");
-//     }).mouseleave(function () {
-//         $(this).removeClass("active");
-//         $(this).find('a').removeClass("active");
-//     });
-// });
-
-
+//Анимацию главного навигационного меню
 $(document).ready(function() {
     $(".menu li").mouseenter(function () {
         $(this).addClass("active");
