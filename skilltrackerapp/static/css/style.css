@@ -1,0 +1,228 @@
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    background-color: #0C1C2B;
+}
+
+
+.name-site {
+    color: #FFD600;
+    font-size: 82px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+.bg {
+    display: block;
+    margin-left: auto;
+    margin-right: 100px;
+    width: 45%;
+}
+
+
+.description {
+    color: #FFF;
+    font-size: 40px;
+    margin: 150px 0px 0px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-weight: 700;
+
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    /* height: 40%; */
+    transform: translate(-50%, -50%);
+}
+
+.button-start {
+    background-color: #E4DC23;
+    border-radius: 78px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+
+    font-size: 20px;
+    width: 250px;
+    height: 70px;   
+    margin: 100px auto; /* auto для центрирования по горизонтали */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    position: absolute;
+    top: 55%;
+    left: 1%;
+    width: 50%;  
+}
+
+.button-start:hover {
+    background-color: #A3FF00;
+    
+}
+
+.header-why-need {
+    background-color: green;
+}
+
+.menu-link {
+    color: #1AF8DE;
+    font-family: Inter;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s; /* Плавное изменение цвета */
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 16px;
+  }
+  
+  .menu-item {
+    margin-right: 70px;  
+  }
+
+
+.menu a.active {
+    color: #E4DC23;
+}
+
+
+.btn-edit {
+    background-color: #E4DC23;
+    border-radius: 78px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+
+    font-size: 20px;
+    width: 200px;
+    height: 50px;   
+    /* margin: 100px auto; auto для центрирования по горизонтали */
+    margin: 92px 0 10px 79px;
+}
+
+.list-skills {
+    color: #05C001;
+    font-family: Inter;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    text-decoration: none; 
+    /* width: 200px; */
+}
+
+.list-s {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    /* margin: 0; */
+    margin-top: 10px;
+}
+
+
+.input-skill-name {
+    padding:10px;
+    margin-left: 125px;
+    border-radius:10px;
+}
+
+.input-skill-hour {
+    padding:10px;
+    margin-left: 30px;
+    border-radius:10px;
+    width: 220px;
+}
+
+.btn-add-skill {
+    background-color: #E4DC23;
+    border-radius: 78px;
+    font-family: 'Inter', sans-serif;
+    color: #000;
+
+    font-size: 15px;
+    width: 150px;
+    height: 45px;   
+    /* margin: 100px auto; auto для центрирования по горизонтали */
+    /* margin: 0px 0px 0px 790px; */
+}
+
+#list {
+    margin-top: 10px;
+}
+
+.link__tg {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    /* position: absolute;
+    top: 95%;
+    left: 1% */
+}
+
+.link__tg-item {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* .link__tg-item:hover {
+    color: #29B6F6;
+} */
+
+.footer {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C55142;
+    padding: 2px;
+}
+
+.table-dark {
+    position: absolute;
+    top: 50%;
+    left: 1%;
+    width: 50%;
+}
+
+.table-dark__name {
+    color: #fff;
+}
+
+#headname {
+    background-color: #68A500;
+    padding-left: 10px;
+}
+
+.feedback-form {
+    /* position: absolute; */
+    /* top: 90%; */
+    margin-top: -280px;
+    margin-left: 30px; 
+    /* left: 20%; */
+    /* scale: 120%; */
+    /* margin: 50px; */
+}
+
+#comments {
+    width: 30%;
+    height: 100px;
+}
+
+.th-sort-by-number {
+    cursor: pointer;
+  }

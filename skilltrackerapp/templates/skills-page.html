@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <title>Трекер навыков</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css"> 
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <header class="header">
+        <div class="name-site">
+            Skill time tracker
+        </div>
+
+        <div class="heading">
+            <h1 id="headname">Главная</h1>
+        </div>
+
+        <div class="container">
+            <nav class="nav">
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a href="index.html" class="menu-link">Главная</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link" onclick="changeHeader('Аккаунт')">Аккаунт</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./skills-page.html" class="menu-link active" onclick="changeHeader('Мои навыки')">Мои навыки</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="menu-link" onclick="changeHeader('Статистика')">Статистика</a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./aboutus.html" class="menu-link" onclick="changeHeader('О нас')">О нас</a>
+                    </li>
+                </ul>          
+            </nav>
+        </div>
+
+    </header>
+
+    <main id="my-skills">
+        <div class="section-skills">
+            <div class="container">
+                <button class="btn-edit">Редактировать</button>
+                <div class="list-s">
+                    <div class="list-skills">
+                        Список навыков
+                    </div>
+                    <div class="list-skills">
+                        Затраченное время
+                    </div>
+                    <div class="list-skills">
+                        Мини статистика
+                    </div>
+                </div>
+                <div class="input-skill">
+                    <input class="input-skill-name" id="input-skill" type="text" placeholder="Название навыка">
+                    <input class="input-skill-hour" id="input-hours" type="text" placeholder="Количество имеющихся часов">
+                    <button class="btn-add-skill" id="btn-add">Добавить навык</button>
+                </div>
+                <ul class="list-group" id="list">
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="link">
+
+            <a class="link__tg" href="https://t.me/Wizard700" target="_blank">
+                <span class="link__tg-item">Developed by: @Wizard700</span>
+                <img class="link__tg-img" src="/img/tg.svg" alt="">
+             </a>
+        </div>
+    </footer>
+    <script src="./js/script_skill_page.js" defer></script>
+    <script src="./js/script.js" defer></script>
+</body>
+</html>
