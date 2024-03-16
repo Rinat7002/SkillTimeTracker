@@ -8,12 +8,12 @@ from flask import render_template, make_response, request, Response, jsonify, js
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title='Главная')
 
 @app.route('/skills')
 def skills():
-    return render_template('skills-page.html')
+    return render_template('skills-page.html', title='Мои навыки')
 
 @app.route('/aboutus')
 def aboutus():
-    return render_template('aboutus.html')
+    return render_template('aboutus.html', title='О нас')
