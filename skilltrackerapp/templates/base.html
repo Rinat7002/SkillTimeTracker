@@ -27,27 +27,18 @@
             <h1 id="headname">Главная</h1>
         </div>
 
+
         <div class="container">
-            <nav class="nav">
-                <ul class="menu">
+        <nav class="nav">
+            <ul class="menu">
+                {% for item in navmenu %}
                     <li class="menu-item">
-                        <a href="{{ url_for('index') }}" class="menu-link {% block menu_link_general %}{% endblock %}">Главная</a> <!-- active - выделенный элемент из nav текущей страницы -->
+                        <a href="{{ item.addr }}" class="menu-link {% if item.addr == request.path %}active{% endif %}">{{ item.name }}</a> <!-- Проверяем, соответствует ли адрес текущему адресу запроса и добавляем класс active -->
                     </li>
-                    <li class="menu-item">
-                        <a href="#" class="menu-link {% block menu_link_account %}{% endblock %}">Аккаунт</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ url_for('skills') }}" class="menu-link {% block menu_link_myskills %}{% endblock %}">Мои навыки</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#" class="menu-link {% block menu_link_statistics %}{% endblock %}">Статистика</a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="{{ url_for('aboutus') }}" class="menu-link {% block menu_link_aboutus %}{% endblock %}">О нас</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
     </header>
 
 
