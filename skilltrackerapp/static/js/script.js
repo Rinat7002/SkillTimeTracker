@@ -56,14 +56,6 @@ $(document).ready(function() {
     });
 });
 
-
-function formSubmit(formelem) {
-	let fname = document.getElementsByName("fname")[0].value;
-	// console.log(fname);
-	var alerttext = `${fname}, ваш запрос отправлен.`;
-	alert(alerttext);
-	}
-
 $(document).ready(function() {
 	$(".hidebox p").hide();
 	// $(".hidebox h3").css("background-color", "#29c5e6");

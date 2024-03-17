@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <main class="main" id="general">
+            <figure>
+                <img class="bg" src="{{ url_for('static', filename='img/bg.jpg')}}" alt="background-image">
+    <!--        <img class="bg" src="{{ url_for('static', filename='img/bg.jpg')}}" alt="backgroud-image">-->
+    <!--        <img class="bg" src="skilltrackerapp/static/img/bg.jpg" alt="backgroud-image">-->
+            </figure>
+            <section class="main__desc">
+                <div class="description">Трекер навыков - это сайт, который поможет отслеживать количество часов,
+                    потраченных на ваши навыки, дела, хобби и прочие действия. </div>
+                <a class="button-start" href="{{ url_for('skills') }}">Начать отслеживать</a>
+            </section>
+
+            <section class="articles">
+                <div class="hidebox">
+                    <h3 class="header-why-need">Зачем это нужно?</h3>
+                    <p>Отслеживание потраченного времени на свои навыки и занятия может быть очень полезным и эффективным способом оценки своего уровня и прогресса в различных областях. Запись времени, которое ты уделяешь упражнениям, изучению новых материалов или тренировкам, позволит более точно определить, насколько регулярно и предметно ты занимаешься своими увлечениями.</p>
+                </div>
+            </section>
+    </main>
+{% endblock %}

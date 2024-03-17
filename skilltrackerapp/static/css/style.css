@@ -218,6 +218,10 @@ body {
     /* margin: 50px; */
 }
 
+.request-status {
+    margin-left: 500px;
+}
+
 #comments {
     width: 30%;
     height: 100px;

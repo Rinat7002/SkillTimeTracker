@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ title }} - Трекер навыков</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    {% block styles %}
+    {% endblock %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+
+    <script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <header class="header">
+        <div class="name-site">
+            Skill time tracker
+        </div>
+
+        <div class="heading">
+            <h1 id="headname">Главная</h1>
+        </div>
+
+
+        <div class="container">
+        <nav class="nav">
+            <ul class="menu">
+                {% for item in navmenu %}
+                    <li class="menu-item">
+                        <a href="{{ item.addr }}" class="menu-link {% if item.addr == request.path %}active{% endif %}">{{ item.name }}</a> <!-- Проверяем, соответствует ли адрес текущему адресу запроса и добавляем класс active -->
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+    </header>
+
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+        <div class="link">
+            <a class="link__tg" href="https://t.me/Wizard700" target="_blank">
+                <span class="link__tg-item">Developed by: @Wizard700</span>
+                <img class="link__tg-img" src="static/img/tg.svg" alt="">
+             </a>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js" defer></script>
+    {% block sortjs %}{% endblock %}
+    {% block skillsjs %}{% endblock %}
+    {% block formsend %}{% endblock %}
+</body>
+</html>
