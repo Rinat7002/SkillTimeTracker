@@ -35,13 +35,19 @@
         </tbody>
     </table>
 
+
+    <div class="request-status">
+        <h2>Статус вашего запроса</h2>
+        <p id="statusfield"></p>
+    </div>
+
     <form class="feedback-form" onsubmit="formSubmit(this)">
         <p>Форма обратной связи</p>
         <fieldset>
           <legend>Контактная информация</legend>
-            <label for="fname">Имя <em>*</em></label>
+            <label for="fname">Имя</label>
             <input type="text" name="fname" id="fname"><br>
-            <label for="email">Email <em>*</em></label>
+            <label for="email">Email</label>
             <input id="email"><br>
         </fieldset>
         <fieldset>
@@ -49,12 +55,16 @@
             <textarea id="comments"></textarea>
         </fieldset>
 
-        <p><input type="submit" value="Отправить"></p>
+        <p><input type="submit" id="sendbtn" value="Отправить"></p>
     </form>
 </main>
 {% endblock %}
 
 {% block sortjs %}
 <script src="static/js/sort-table.js"></script>
+{% endblock %}
+
+{% block formsend %}
+<script src="static/js/formsend.js" defer></script>
 {% endblock %}
 
