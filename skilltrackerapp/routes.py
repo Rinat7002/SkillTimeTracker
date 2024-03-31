@@ -3,6 +3,7 @@
 from skilltrackerapp import app #,db
 # Подключаем библиотеку для "рендеринга" html-шаблонов из папки templates
 from flask import render_template, make_response, request, Response, jsonify, json
+from . import dbservice
 
 navmenu = [
     {
@@ -41,18 +42,64 @@ def aboutus():
     return render_template('aboutus.html', title='О нас', navmenu=navmenu)
 
 
-# Обработка POST-запроса для демонстрации AJAX
+#Получаем все записи contactrequests из БД
+@app.route('/api/contactrequest', methods=['GET'])
+def get_contact_req_all():
+    response = dbservice.get_contact_req_all()
+    return json_response(response)
+
+@app.route('/api/contactrequest/<int:id>', methods=['GET'])
+# Получаем запись по id
+def get_contact_req_by_id(id):
+    response = dbservice.get_contact_req_by_id(id)
+    return json_response(response)
+
+@app.route('/api/contactrequest/author/<string:firstname>', methods=['GET'])
+# Получаем запись по имени пользователя
+def get_contact_req_by_author(firstname):
+    if not firstname:
+        # то возвращаем стандартный код 400 HTTP-протокола (неверный запрос)
+        return bad_request()
+        # Иначе отправляем json-ответ
+    else:
+        response = dbservice.get_contact_req_by_author(firstname)
+    return json_response(response)
+
+
+
 @app.route('/api/contactrequest', methods=['POST'])
-def post_contact():
+def create_contact_req():
     # Если в запросе нет данных или неверный заголовок запроса (т.е. нет 'application/json'),
     # или в этом объекте нет, например, обязательного поля 'firstname'
-    if not request.json or not 'firstname' in request.json:
+    if not request.json or not 'firstname' or not 'reqtext' in request.json:
         # возвращаем стандартный код 400 HTTP-протокола (неверный запрос)
         return bad_request()
     # Иначе отправляем json-ответ
     else:
-        msg = request.json['firstname'] + ", ваш запрос получен !";
-        return json_response({ 'message': msg })
+        response = dbservice.create_contact_req(request.json)
+        return json_response(response)
+
+
+@app.route('/api/contactrequest/<int:id>', methods=['PUT'])
+# Обработка запроса на обновление записи в БД
+def update_contact_req_by_id(id):
+    # Если в запросе нет данных или неверный заголовок запроса (т.е. нет 'application/json'),
+    # или в данных нет обязательного поля 'reqtext'
+    if not request.json or not 'reqtext' in request.json:
+        # возвращаем стандартный код 400 HTTP-протокола (неверный запрос)
+        return bad_request()
+    # Иначе обновляем запись в БД и отправляем json-ответ
+    else:
+        response = dbservice.update_contact_req_by_id(id, request.json)
+        return json_response(response)
+
+
+@app.route('/api/contactrequest/<int:id>', methods=['DELETE'])
+# Обработка запроса на удаление записи в БД по id
+def delete_contact_req_by_id(id):
+    response = dbservice.delete_contact_req_by_id(id)
+    return json_response(response)
+
 
 """
 

@@ -10,8 +10,11 @@ sendbtn.addEventListener("click", function (e) {
     e.preventDefault();
 
     let fname = document.getElementsByName("fname")[0].value;
+    let email = document.getElementsByName("email")[0].value;
+    let reqtype = document.getElementsByName("reqtype")[0].value;
+    let reqtext = document.getElementsByName("reqtext")[0].value;
     // Преобразуем полученные данные в JSON
-    var formdata = JSON.stringify({ firstname: fname});
+    var formdata = JSON.stringify({ firstname: fname, email: email, reqtype: reqtype, reqtext: reqtext});
 
     // Отправляем запрос через fetch (необходимо выставить соответствующий заголовок (headers)!)
     fetch("/api/contactrequest",
@@ -28,9 +31,9 @@ sendbtn.addEventListener("click", function (e) {
         response.json().then(function(data) {
             console.log(data)
             let statfield = document.getElementById("statusfield");
-            statfield.textContent = data.message;
+//            statfield.textContent = data.message;
             //statfield.textContent.bold();
-            //alert(data.message);
+            alert(data.message);
         });
     })
     .catch( error => {

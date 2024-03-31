@@ -48,11 +48,18 @@
             <label for="fname">Имя</label>
             <input type="text" name="fname" id="fname"><br>
             <label for="email">Email</label>
-            <input id="email"><br>
+            <input type="email" name="email" id="email"><br>
+            <label>Тип запроса:</label><br>
+            <select name="reqtype">
+                <option value="suggestion">Пожелание/предложение</option>
+                <option value="collaboration">Сотрудничество</option>
+                <option value="problem">Проблема</option>
+                <option value="question">Вопрос</option>
+            </select><br>
         </fieldset>
         <fieldset>
             <label for="comments">Опишите пожелание или проблему:</label><br>
-            <textarea id="comments"></textarea>
+            <textarea name="reqtext" id="comments"></textarea>
         </fieldset>
 
         <p><input type="submit" id="sendbtn" value="Отправить"></p>
