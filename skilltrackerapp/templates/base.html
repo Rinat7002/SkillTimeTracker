@@ -24,7 +24,7 @@
         </div>
 
         <div class="heading">
-            <h1 id="headname">Главная</h1>
+            <h1 id="headname"></h1>
         </div>
 
 
@@ -33,7 +33,8 @@
             <ul class="menu">
                 {% for item in navmenu %}
                     <li class="menu-item">
-                        <a href="{{ item.addr }}" class="menu-link {% if item.addr == request.path %}active{% endif %}">{{ item.name }}</a> <!-- Проверяем, соответствует ли адрес текущему адресу запроса и добавляем класс active -->
+                        <!-- Проверяем, соответствует ли адрес текущему адресу запроса и добавляем класс active -->
+                        <a href="{{ item.addr }}" class="menu-link {% if item.addr == request.path %}active{% endif %}">{{ item.name }}</a>
                     </li>
                 {% endfor %}
             </ul>
