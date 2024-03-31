@@ -73,7 +73,7 @@ $(".hidebox h3").dblclick(function () {
 
 });
 
-
+// Изменение размеров изображений при наведении на них
 $("figure img").hover(
     function() {
         var currentWidth = $(this).width();
