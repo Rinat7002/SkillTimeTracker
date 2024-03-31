@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 # Данный объект (провайдер) для работы с базой данных, интегрированный в Flask,
 # берет на себя все функции по управлению подключениями
-#db = SQLAlchemy(app)
+db = SQLAlchemy(app)
 
 # Подключаем маршруты (адреса REST запросов)
 from skilltrackerapp import routes
