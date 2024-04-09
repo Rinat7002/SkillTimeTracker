@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main id="account">
+    <p>Ваш логин: {{ session.get('user')  }}</p>
+    <p>Ваша почта: {{ session.get('userMail') }}</p>
+
+</main>
+{% endblock %}

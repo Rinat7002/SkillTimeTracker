@@ -67,6 +67,23 @@
 </main>
 {% endblock %}
 
+
+{% block all_requests %}
+<div class="all_requests">
+        <p id="allreqs">Все запросы:</p>
+        <ul>
+            {% for table_name, entries in all_reqs.items() %}
+<!--                <li>{{ table_name }}</li>-->
+                <ul>
+                    {% for entry in entries %}
+                        <li>{{ entry.name }} : {{ entry.seq }}</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
 {% block sortjs %}
 <script src="static/js/sort-table.js"></script>
 {% endblock %}

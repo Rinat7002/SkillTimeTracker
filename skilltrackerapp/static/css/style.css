@@ -229,4 +229,12 @@ body {
 
 .th-sort-by-number {
     cursor: pointer;
-  }
+}
+
+
+.auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

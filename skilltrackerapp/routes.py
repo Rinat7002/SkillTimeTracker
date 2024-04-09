@@ -2,8 +2,9 @@
 # Подключаем объект приложения Flask из __init__.py
 from skilltrackerapp import app #,db
 # Подключаем библиотеку для "рендеринга" html-шаблонов из папки templates
-from flask import render_template, make_response, request, Response, jsonify, json
+from flask import render_template, make_response, request, Response, jsonify, json, session, redirect, url_for
 from . import dbservice
+import functools
 
 navmenu = [
     {
@@ -12,7 +13,7 @@ navmenu = [
     },
     {
         'name': 'Аккаунт',
-        'addr': '#'
+        'addr': '/account'
     },
     {
         'name': 'Мои навыки',
@@ -28,18 +29,82 @@ navmenu = [
     },
 ]
 
+navmenu_authorisation = [
+    {
+        'name': 'Главная',
+        'addr': '/index'
+    },
+    {
+        'name': 'О нас',
+        'addr': '/aboutus'
+    },
+]
+
+
+# Функция-декоратор для проверки авторизации пользователя
+def login_required(route_func):
+    @functools.wraps(route_func)
+    def decorated_route(*args, **kwargs):
+        # Если не установлен параметр сессии user или значение cookie 'AuthToken' не равно логину пользователя
+        if not session.get('user') or request.cookies.get('AuthToken') != session.get('user'):
+            # перенаправляем на страницу регистрации
+            return redirect(url_for('register'))
+        return route_func(*args, **kwargs)
+    return decorated_route
+
+
 @app.route('/')
 @app.route('/index')
 def index():
     return render_template('index.html', title='Главная', navmenu=navmenu)
 
 @app.route('/skills')
+@login_required
 def skills():
     return render_template('skills-page.html', title='Мои навыки', navmenu=navmenu)
 
 @app.route('/aboutus')
 def aboutus():
-    return render_template('aboutus.html', title='О нас', navmenu=navmenu)
+    response = dbservice.get_all_requests()
+    print(response)
+    return render_template('aboutus.html', title='О нас', navmenu=navmenu, all_reqs=response)
+
+@app.route('/account')
+@login_required
+def account():
+    return render_template('account.html', title='Аккаунт', navmenu=navmenu)
+
+
+
+
+# Страница авторизации
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    # Если POST-запрос
+    if request.method == 'POST':
+        # если нажата кнопка "Зарегистрировать", переадресуем на страницу регистрации
+        if request.form.get('regBtn') == 'true':
+            return redirect(url_for('register'))
+        # иначе запускаем авторизацию по данным формы
+        else:
+            return dbservice.login_user(request.form)
+    else:
+        return render_template('login.html', title='Авторизация', navmenu=navmenu_authorisation)
+
+
+# Страница регистрации
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    # Если POST-запрос, регистрируем нового пользователя
+    if request.method == 'POST':
+        return dbservice.register_user(request.form)
+    else:
+        return render_template('register.html', title='Регистрация', navmenu=navmenu_authorisation)
+
+
+
+
+
 
 
 #Получаем все записи contactrequests из БД
