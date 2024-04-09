@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
-
+    {% block nav_style_auth %}{% endblock %}
     <script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
 
 </head>
@@ -29,7 +29,7 @@
 
 
         <div class="container">
-        <nav class="nav">
+        <nav class="nav_menu">
             <ul class="menu">
                 {% for item in navmenu %}
                     <li class="menu-item">
@@ -44,6 +44,9 @@
 
 
     {% block content %}{% endblock %}
+    {% block content_login %}{% endblock %}
+    {% block all_requests %}{% endblock %}
+
 
     <footer class="footer">
         <div class="link">
