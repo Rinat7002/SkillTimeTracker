@@ -53,6 +53,60 @@ def get_contact_req_all():
 
 
 
+
+def get_skills_all():
+    try:
+        result = []  # создаем пустой список
+        # Получаем итерируемый объект, где содержатся все строки таблицы contactrequests
+        stmt = text("SELECT * FROM skills")
+        rows = db.session.execute(stmt).fetchall()
+        # Каждую строку конвертируем в словарь
+        for row in rows:
+            row_dict = dict(row._mapping.items())
+            result.append(row_dict)
+        # Возвращаем словарь с ключом 'contactrequests', где значение - это список словарей с информацией
+        return {'skills': result}
+    except Exception as e:
+        # Обработка ошибок
+        return {'error': str(e)}
+
+
+
+def create_skill(json_data):
+    try:
+        cur_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")     # текущая дата и время
+
+        # Используйте text() для объявления текстового SQL-выражения
+        stmt = text("INSERT INTO skills (hour_skill, name_skill) "
+                    "VALUES (:hour_skill, :name_skill)")
+
+        # Выполните SQL-выражение с использованием параметров
+        db.session.execute(stmt, {
+            'hour_skill': json_data['hour_skill'],
+            'name_skill': json_data['name_skill']
+        })
+
+        # Подтвердите изменения в БД
+        db.session.commit()
+
+        # Возвращаем результат
+        return {'message': "ContactRequest Created!"}
+
+    except Exception as e:
+        # Откатываем изменения в БД
+        db.session.rollback()
+        # Возвращаем dict с ключом 'error' и текстом ошибки
+        return {'message': str(e)}
+
+
+
+
+
+
+
+
+
+
 # Получаем все запросы по имени автора
 def get_contact_req_by_author(firstname):
     result = []

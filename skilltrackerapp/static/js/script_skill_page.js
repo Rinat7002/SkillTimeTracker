@@ -31,9 +31,15 @@ function render() {
 render()
 
 
+btnAddSkill.addEventListener("click", function (e) {
+    /* Инструкция preventDefault позволяет переопределить стандартное поведение браузера,
+    если ее убрать, то браузер по-умолчанию обновит страницу после отправки данных формы */
+    e.preventDefault();
 
-btnAddSkill.onclick = function () {
     console.log(nameSkills.value)
+  
+// btnAddSkill.onclick = function () {
+//     console.log(nameSkills.value)
 
     if (nameSkills.value.length === 0) {
         return
@@ -43,11 +49,43 @@ btnAddSkill.onclick = function () {
         name: nameSkills.value,
         hours: hoursSkill.value,
     }
-    skills.push(newSkill)
+
+    // Тут нужно в БД заносить навык + часы
+
+
+    var formdata = JSON.stringify({ hour_skill: newSkill.name, name_skill: newSkill.hours});
+
+
+    fetch("/api/skills",
+    {
+        method: "POST",
+        body: formdata,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then( response => {
+        // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
+        // Возвращаем json-объект из response и получаем данные из поля message
+        response.json().then(function(data) {
+            console.log(data)
+            // let statfield = document.getElementById("statusfield");
+//            statfield.textContent = data.message;
+            //statfield.textContent.bold();
+            alert(data.message);
+        });
+    })
+    .catch( error => {
+        alert(error);
+        console.error('error:', error);
+    });
+
+    skills.push(newSkill) // самый простой способ занесения в примитивную перменную как альтернатива БД
+
     render()
     nameSkills.value = ''
     hoursSkill.value = ''
-}
+},)
 
 listElement.onclick = function(event) {
     if (event.target.dataset.index) {
