@@ -77,20 +77,21 @@ def create_skill(json_data):
         cur_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")     # текущая дата и время
 
         # Используйте text() для объявления текстового SQL-выражения
-        stmt = text("INSERT INTO skills (hour_skill, name_skill) "
-                    "VALUES (:hour_skill, :name_skill)")
+        stmt = text("INSERT INTO skills (name_skill, hour_skill ) "
+                    "VALUES (:name_skill, :hour_skill)")
 
         # Выполните SQL-выражение с использованием параметров
         db.session.execute(stmt, {
-            'hour_skill': json_data['hour_skill'],
-            'name_skill': json_data['name_skill']
+            'name_skill': json_data['name_skill'],
+            'hour_skill': json_data['hour_skill']
+            
         })
 
         # Подтвердите изменения в БД
         db.session.commit()
 
         # Возвращаем результат
-        return {'message': "ContactRequest Created!"}
+        return {'message': "Skill Created"}
 
     except Exception as e:
         # Откатываем изменения в БД
