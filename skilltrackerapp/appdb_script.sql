@@ -14,3 +14,10 @@ create table logins (
 	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL UNIQUE
 );
+
+
+CREATE TABLE skills (
+	id integer PRIMARY KEY autoincrement,
+    name_skill VARCHAR(255),
+    hour_skill INT
+);

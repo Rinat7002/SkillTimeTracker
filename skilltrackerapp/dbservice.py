@@ -74,7 +74,7 @@ def get_skills_all():
 
 def create_skill(json_data):
     try:
-        cur_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")     # текущая дата и время
+        # cur_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")     # текущая дата и время
 
         # Используйте text() для объявления текстового SQL-выражения
         stmt = text("INSERT INTO skills (name_skill, hour_skill ) "
@@ -102,7 +102,17 @@ def create_skill(json_data):
 
 
 
-
+# Удалить запрос по id в таблице
+def delete_skill_by_id(id):
+    try:
+        # DELETE запрос в БД
+        stmt = text(f"DELETE FROM skills WHERE id = {id}")
+        db.session.execute(stmt)
+        db.session.commit()
+        return {'message': "Skill deleted"}
+    except Exception as e:
+        db.session.rollback()
+        return {'message': str(e)}
 
 
 

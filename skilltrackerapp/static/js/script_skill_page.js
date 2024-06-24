@@ -41,7 +41,6 @@ function render() {
 render()
 
 
-var data  = new FormData();
   
 btnAddSkill.onclick = function () {
     console.log(nameSkills.value)
@@ -80,12 +79,10 @@ btnAddSkill.onclick = function () {
     .catch( error => {
         alert(error);
         console.error('error:', error);
-    });
-
-
-
-    
+    });  
 };
+
+
 
 
 
@@ -93,16 +90,48 @@ listElement.onclick = function(event) {
     if (event.target.dataset.index) {
         const index = parseInt(event.target.dataset.index)
         const type = event.target.dataset.type
-
+        console.log(index);
+        // Удалить навык из списка
         if (type === 'remove') {
-            // console.log('remove', index)
-            deleteState = confirm(`Хотите удалить навык "${data.skills[index].name}" ?`)
-            if (deleteState) {
-                data.skills.splice(index, 1)
-            }
+
+            console.log(event.target.closest('.list-group-item'));
+
+            const id = "3";
+
+            fetch(`/api/skills/${id}`,
+            {
+                method: "DELETE",
+                // body: formdata,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then( response => {
+                // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
+                // Возвращаем json-объект из response и получаем данные из поля message
+                response.json().then(function(data) {
+                    console.log(data)
+
+                    // deleteState = confirm(`Хотите удалить навык "${data.skills[index].name}" ?`)
+
+                    // if (deleteState) {
+                    //     data.skills.splice(index, 1)
+                    // }
+                    render()
+                    // alert(data.message);
+                });
+            })
+            .catch( error => {
+                alert(error);
+                console.error('error:', error);
+            });            
+
+
+
+            
             
         }
-        render()
+        // render()
     }
 }
 

@@ -123,6 +123,11 @@ def create_skill():
         return json_response(response)
 
 
+@app.route('/api/skills/<int:id>', methods=['DELETE'])
+# Обработка запроса на удаление записи в БД по id
+def delete_skill_by_id(id):
+    response = dbservice.delete_skill_by_id(id)
+    return json_response(response)
 
 
 
