@@ -21,13 +21,13 @@ function render() {
         // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
         // Возвращаем json-объект из response и получаем данные из поля message
         response.json().then(function(data) {
-            console.log(data)
+            // console.log(data)
             if (data.skills.length === 0) {
                 listElement.innerHTML = '<p>Добавьте свои навыки</p>'
             }
             else {
                 for (let i = 0; i < data.skills.length; i++) {
-                    listElement.insertAdjacentHTML('beforeend', getSkillTemplate(data.skills[i], i))
+                    listElement.insertAdjacentHTML('beforeend', getSkillTemplate(data.skills[i]))
                 }
             }
         });
@@ -43,7 +43,7 @@ render()
 
   
 btnAddSkill.onclick = function () {
-    console.log(nameSkills.value)
+    // console.log(nameSkills.value)
 
     if ((nameSkills.value.length === 0) || (hoursSkill.value.length === 0))  {
         return
@@ -69,7 +69,7 @@ btnAddSkill.onclick = function () {
         // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
         // Возвращаем json-объект из response и получаем данные из поля message
         response.json().then(function(data) {
-            console.log(data)
+            // console.log(data)
             render()
             nameSkills.value = ''
             hoursSkill.value = ''
@@ -83,20 +83,134 @@ btnAddSkill.onclick = function () {
 };
 
 
+// Редактировать навык
+function editSkill(button) {
+    const listItem = button.closest('li');
+    const skillNameSpan = listItem.querySelector('#skill-name');
+    const skillHourSpan = listItem.querySelector('#skill-hour');
+    const taskIndex = button.getAttribute('data-index');
+    const id = taskIndex;
+    console.log(id);
+
+    if (button.dataset.editing === "true") {
+        // Save changes
+        const nameInput = listItem.querySelector('input[name="skill-name"]');
+        const hourInput = listItem.querySelector('input[name="skill-hour"]');
+        
+        // Новое измененное название навыка и количество часов
+        const newSkillName = nameInput.value;
+        const newSkillHour = hourInput.value;
+
+        // Старое название навыка и количество часов
+        const oldSkillName = nameInput.dataset.oldValue;
+        const oldSkillHour = hourInput.dataset.oldValue;
+        
+        // Обновление текстовых элементов новыми значениями
+        skillNameSpan.textContent = newSkillName;
+        skillHourSpan.textContent = newSkillHour + ' часов';
+
+        // Проверка на изменения и вывод в консоль
+        if (oldSkillName !== newSkillName || oldSkillHour !== newSkillHour) {
+            var formdata = JSON.stringify({ name_skill: newSkillName, hour_skill: newSkillHour});
+
+            fetch(`/api/skills/${id}`,
+                {
+                    method: "PUT",
+                    body: formdata,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then( response => {
+                    // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
+                    // Возвращаем json-объект из response и получаем данные из поля message
+                    response.json().then(function(data) {
+                        // console.log(data)
+                        render()
+                    });
+                })
+                .catch( error => {
+                    alert(error);
+                    console.error('error:', error);
+                }); 
+        } else {
+            
+        }
+        
+        // Удаление полей ввода
+        nameInput.remove();
+        hourInput.remove();
+        
+        // Обновление текста кнопки и атрибута
+        button.textContent = 'Редактировать';
+        button.dataset.editing = "false";
+
+        // Удаление зеленого цвета кнопки
+        button.classList.remove('btn-success');
+        button.classList.add('btn-warning');
+    } else {
+
+        // Режим редактирования
+        // Старое название навыка и количество часов
+        const oldSkillName = skillNameSpan.textContent;
+        const oldSkillHour = skillHourSpan.textContent.replace(' часов', '');        
+        
+        // Создание полей ввода
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.name = 'skill-name';
+        nameInput.value = oldSkillName;
+        nameInput.dataset.oldValue = oldSkillName; // Сохранение старого значения
+
+        const hourInput = document.createElement('input');
+        hourInput.type = 'text';
+        hourInput.name = 'skill-hour';
+        hourInput.value = oldSkillHour;
+        hourInput.dataset.oldValue = oldSkillHour; // Сохранение старого значения
+
+        skillNameSpan.textContent = '';
+        skillHourSpan.textContent = '';
+
+        skillNameSpan.appendChild(nameInput);
+        skillHourSpan.appendChild(hourInput);
+
+        button.textContent = 'Сохранить';
+        button.dataset.editing = "true";
+
+        // Изменение цвета кнопки на зеленый
+        button.classList.add('btn-success');
+        button.classList.remove('btn-warning');
+    }
 
 
 
+
+
+
+}
+
+
+
+// Кнопка "Удалить"
 listElement.onclick = function(event) {
     if (event.target.dataset.index) {
-        const index = parseInt(event.target.dataset.index)
-        const type = event.target.dataset.type
-        console.log(index);
-        // Удалить навык из списка
+        const taskIndex = event.target.getAttribute('data-index');
+        const id = taskIndex;
+        const type = event.target.dataset.type;
+
+        // Удалить навык    
         if (type === 'remove') {
+            console.log("remove");
+            // console.log(event.target.closest('.list-group-item'));
+            var isDelete = confirm(`Вы действительно хотите удалить ?`)
 
-            console.log(event.target.closest('.list-group-item'));
-
-            const id = "3";
+            if (isDelete) {
+                // console.log(`Навык был удален.`);
+            } else {
+                // Если пользователь нажал "Отмена", выйти из функции
+                // console.log(`Удаление навыка отменено.`);
+                return;
+            }  
 
             fetch(`/api/skills/${id}`,
             {
@@ -110,43 +224,36 @@ listElement.onclick = function(event) {
                 // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
                 // Возвращаем json-объект из response и получаем данные из поля message
                 response.json().then(function(data) {
-                    console.log(data)
-
-                    // deleteState = confirm(`Хотите удалить навык "${data.skills[index].name}" ?`)
-
-                    // if (deleteState) {
-                    //     data.skills.splice(index, 1)
-                    // }
+                    // console.log(data)
                     render()
-                    // alert(data.message);
                 });
             })
             .catch( error => {
                 alert(error);
                 console.error('error:', error);
-            });            
+            });                        
+        } 
 
-
-
-            
-            
-        }
-        // render()
     }
 }
 
-function getSkillTemplate(skill, index) {
+
+
+function getSkillTemplate(skill) {
     return `
     <li
-        class="list-group-item d-flex justify-content-between align-items-center"
+        id="list-group-skills"
+        class="list-group-item"
     >
-        <span class="skills">${skill.name_skill}</span>
-        <span class="skills">${skill.hour_skill} часов</span>
+        <span id="skill-name" class="skills">${skill.name_skill}</span>
+        <span id="skill-hour" class="skills">${skill.hour_skill} часов</span>
 
-        <span>
-        <span class="btn btn-small btn-danger" data-index="${index}" data-type="remove">&times;</span>
+        <span class="skill-actions">
+        <span id="btn-edit-skill" class="btn edit-btn btn-small btn-warning" data-index="${skill.id}" data-type="edit" onclick="editSkill(this)">Редактировать</span>
+        <span id="btn-delete-skill" class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">Удалить</span>
         </span>
         </li>
 ` 
 }
+
 

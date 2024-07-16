@@ -101,6 +101,21 @@ def create_skill(json_data):
 
 
 
+# Обновить навык по id в таблице
+def update_skill(id, json_data):
+    try:
+        # cur_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # текущая дата и время
+        # UPDATE запрос в БД
+        # stmt = text(f"UPDATE skills SET reqtext = '{json_data['reqtext']}', "f"updatedAt = '{cur_time}' WHERE id = {id}")
+
+        stmt = text(f"UPDATE skills SET name_skill = '{json_data['name_skill']}', "f"hour_skill = '{json_data['hour_skill']}' WHERE id = {id}")
+        db.session.execute(stmt)
+        db.session.commit()
+        return {'message': "Skill Updated!"}
+    except Exception as e:
+        db.session.rollback()
+        return {'message': str(e)}
+
 
 # Удалить запрос по id в таблице
 def delete_skill_by_id(id):
