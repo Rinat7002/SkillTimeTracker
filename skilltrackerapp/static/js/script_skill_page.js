@@ -85,18 +85,69 @@ btnAddSkill.onclick = function () {
 
 
 
-
+// "Кнопка Редактировать" 
 listElement.onclick = function(event) {
     if (event.target.dataset.index) {
-        const index = parseInt(event.target.dataset.index)
+        const taskIndex = event.target.getAttribute('data-index');
+        const id = taskIndex;
         const type = event.target.dataset.type
-        console.log(index);
+
+        // Редактирование
+        if (type === 'edit') {
+            console.log(event.target.closest('.list-group-item'));
+            
+            // Сначала в html текст -> input 
+            // Добавить кнопку с крестиком и галочкой рядом с изменяемыми данными
+            // Если изменились данные , и нажал "готово", то сделать PUT
+
+
+            // не забыть в urls прописать и в dbservice функцию по update
+            fetch(`/api/skills/${id}`,
+            {
+                method: "PUT",
+                // body: formdata,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then( response => {
+                // fetch в случае успешной отправки возвращает Promise, содержащий response объект (ответ на запрос)
+                // Возвращаем json-объект из response и получаем данные из поля message
+                response.json().then(function(data) {
+                    console.log(data)
+                    render()
+                });
+            })
+            .catch( error => {
+                alert(error);
+                console.error('error:', error);
+            });                        
+        }
+    }
+}
+
+
+
+// Кнопка "Удалить"
+listElement.onclick = function(event) {
+    if (event.target.dataset.index) {
+        const taskIndex = event.target.getAttribute('data-index');
+        const id = taskIndex;
+        const type = event.target.dataset.type
+        nameSkillToDelete = document.getElementById('input-skill')
+
         // Удалить навык из списка
         if (type === 'remove') {
-
             console.log(event.target.closest('.list-group-item'));
+            var isDelete = confirm(`Вы действительно хотите удалить ${nameSkillToDelete} ?`)
 
-            const id = "3";
+            if (isDelete) {
+                console.log(`${nameSkillToDelete} был удален.`);
+            } else {
+                // Если пользователь нажал "Отмена", выйти из функции
+                console.log(`Удаление ${nameSkillToDelete} отменено.`);
+                return;
+            }  
 
             fetch(`/api/skills/${id}`,
             {
@@ -111,27 +162,14 @@ listElement.onclick = function(event) {
                 // Возвращаем json-объект из response и получаем данные из поля message
                 response.json().then(function(data) {
                     console.log(data)
-
-                    // deleteState = confirm(`Хотите удалить навык "${data.skills[index].name}" ?`)
-
-                    // if (deleteState) {
-                    //     data.skills.splice(index, 1)
-                    // }
                     render()
-                    // alert(data.message);
                 });
             })
             .catch( error => {
                 alert(error);
                 console.error('error:', error);
-            });            
-
-
-
-            
-            
+            });                        
         }
-        // render()
     }
 }
 
@@ -144,7 +182,8 @@ function getSkillTemplate(skill, index) {
         <span class="skills">${skill.hour_skill} часов</span>
 
         <span>
-        <span class="btn btn-small btn-danger" data-index="${index}" data-type="remove">&times;</span>
+        <span class="btn btn-small btn-warning" data-type="edit">Редактировать</span>
+        <span class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">Удалить</span>
         </span>
         </li>
 ` 
