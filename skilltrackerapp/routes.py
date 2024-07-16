@@ -121,6 +121,19 @@ def create_skill():
     else:
         response = dbservice.create_skill(request.json)
         return json_response(response)
+    
+
+@app.route('/api/skills/<int:id>', methods=['PUT'])
+def update_skill(id):
+    # Если в запросе нет данных или неверный заголовок запроса (т.е. нет 'application/json'),
+    # или в этом объекте нет, например, обязательного поля 'firstname'
+    if not request.json:
+        # возвращаем стандартный код 400 HTTP-протокола (неверный запрос)
+        return bad_request()
+    # Иначе отправляем json-ответ
+    else:
+        response = dbservice.update_skill(id, request.json)
+        return json_response(response)
 
 
 @app.route('/api/skills/<int:id>', methods=['DELETE'])
