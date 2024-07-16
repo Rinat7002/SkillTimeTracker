@@ -104,6 +104,30 @@ def register():
 
 
 
+@app.route('/api/skills', methods=['GET'])
+def get_skills_all():
+    response = dbservice.get_skills_all()
+    return json_response(response)
+
+
+@app.route('/api/skills', methods=['POST'])
+def create_skill():
+    # Если в запросе нет данных или неверный заголовок запроса (т.е. нет 'application/json'),
+    # или в этом объекте нет, например, обязательного поля 'firstname'
+    if not request.json:
+        # возвращаем стандартный код 400 HTTP-протокола (неверный запрос)
+        return bad_request()
+    # Иначе отправляем json-ответ
+    else:
+        response = dbservice.create_skill(request.json)
+        return json_response(response)
+
+
+@app.route('/api/skills/<int:id>', methods=['DELETE'])
+# Обработка запроса на удаление записи в БД по id
+def delete_skill_by_id(id):
+    response = dbservice.delete_skill_by_id(id)
+    return json_response(response)
 
 
 

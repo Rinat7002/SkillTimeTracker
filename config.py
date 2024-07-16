@@ -16,5 +16,5 @@ class Config(object):
     SESSION_COOKIE_NAME = 'user_sid'
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SECURE = False
-    PERMANENT_SESSION_LIFETIME = timedelta(minutes=30)
+    PERMANENT_SESSION_LIFETIME = timedelta(days=7)
 
