@@ -144,6 +144,10 @@ function editSkill(button) {
         // Обновление текста кнопки и атрибута
         button.textContent = 'Редактировать';
         button.dataset.editing = "false";
+
+        // Удаление зеленого цвета кнопки
+        button.classList.remove('btn-success');
+        button.classList.add('btn-warning');
     } else {
 
         // Режим редактирования
@@ -172,13 +176,12 @@ function editSkill(button) {
 
         button.textContent = 'Сохранить';
         button.dataset.editing = "true";
+
+        // Изменение цвета кнопки на зеленый
+        button.classList.add('btn-success');
+        button.classList.remove('btn-warning');
     }
 
-    // Fetch с PUT
-    // не забыть в routes и dbservice написать
-
-    //если старые данные и новые разные, то fetch
-    // иначе return , тк данные не были изменены
 
 
 
@@ -240,14 +243,14 @@ function getSkillTemplate(skill) {
     return `
     <li
         id="list-group-skills"
-        class="list-group-item d-flex justify-content-between align-items-center"
+        class="list-group-item"
     >
         <span id="skill-name" class="skills">${skill.name_skill}</span>
         <span id="skill-hour" class="skills">${skill.hour_skill} часов</span>
 
-        <span>
-        <span class="btn edit-btn btn-small btn-warning" data-index="${skill.id}" data-type="edit" onclick="editSkill(this)">Редактировать</span>
-        <span class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">Удалить</span>
+        <span class="skill-actions">
+        <span id="btn-edit-skill" class="btn edit-btn btn-small btn-warning" data-index="${skill.id}" data-type="edit" onclick="editSkill(this)">Редактировать</span>
+        <span id="btn-delete-skill" class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">Удалить</span>
         </span>
         </li>
 ` 

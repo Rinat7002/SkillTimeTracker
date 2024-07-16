@@ -238,3 +238,32 @@ body {
     justify-content: center;
 
 }
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#skill-name {
+    flex: 1;
+    text-align: left;
+}
+
+#skill-hour {
+    flex: 1;
+    text-align: center;
+}
+
+.skill-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    text-align: right;
+}
+
+#btn-edit-skill,
+#btn-delete-skill {
+    margin-left: 10px; /* Отступ между кнопками */
+}
