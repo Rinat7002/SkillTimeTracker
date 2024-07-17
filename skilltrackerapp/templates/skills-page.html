@@ -5,6 +5,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 {% endblock %}
 
+{% block adaptive_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adaptive.css')}}">
+{% endblock %}
+
 {% block content %}
 <main id="my-skills">
 <div class="section-skills">
@@ -12,14 +16,11 @@
         <!-- <button class="btn-edit">Редактировать</button> -->
         <br>
         <div class="list-s">
-            <div class="list-skills">
+            <div id="list-skills" class="list-skills">
                 Список навыков
             </div>
-            <div class="list-skills">
+            <div id="list-hours" class="list-skills">
                 Затраченное время
-            </div>
-            <div class="list-skills">
-                Мини статистика
             </div>
         </div>
         <div class="input-skill">

@@ -2,11 +2,12 @@
 body {
     font-family: 'Inter', sans-serif;
     color: #fff;
-    background-color: #0C1C2B;
+    background-color: hsl(209, 56%, 11%);
 }
 
 
 .name-site {
+    /* display: block; */
     color: #FFD600;
     font-size: 82px;
     font-weight: 700;
@@ -90,15 +91,22 @@ body {
     margin-top: 16px;
   }
   
-  .menu-item {
-    margin-right: 70px;  
-  }
+.menu-item {
+margin-right: 70px;  
+}
 
 
 .menu a.active {
     color: #E4DC23;
 }
 
+label {
+    display: none;
+}
+
+#burger-toggle {
+    display: none;
+}
 
 .btn-edit {
     background-color: #E4DC23;
@@ -123,9 +131,14 @@ body {
     /* width: 200px; */
 }
 
+#list-hours {
+    margin-left: 160px;
+}
+
+
 .list-s {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     list-style: none;
     padding: 0;
@@ -136,13 +149,12 @@ body {
 
 .input-skill-name {
     padding:10px;
-    margin-left: 125px;
     border-radius:10px;
 }
 
 .input-skill-hour {
     padding:10px;
-    margin-left: 30px;
+    margin-left: 160px;
     border-radius:10px;
     width: 290px;
 }

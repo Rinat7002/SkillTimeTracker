@@ -8,12 +8,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    {% block styles %}
-    {% endblock %}
+    
+    {% block styles %}{% endblock %}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
     {% block nav_style_auth %}{% endblock %}
+    {% block adaptive_styles %}{% endblock %}
+
     <script type="text/javascript" src="static/js/jquery-3.6.0.min.js"></script>
 
 </head>
@@ -28,9 +30,14 @@
         </div>
 
 
+        <input id="burger-toggle" type="checkbox">
+        <label for="burger-toggle">
+            <span></span>
+        </label>
         <div class="container">
         <nav class="nav_menu">
             <ul class="menu">
+                    
                 {% for item in navmenu %}
                     <li class="menu-item">
                         <!-- Проверяем, соответствует ли адрес текущему адресу запроса и добавляем класс active -->

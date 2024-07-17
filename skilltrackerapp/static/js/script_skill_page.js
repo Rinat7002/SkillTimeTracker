@@ -107,7 +107,7 @@ function editSkill(button) {
         
         // Обновление текстовых элементов новыми значениями
         skillNameSpan.textContent = newSkillName;
-        skillHourSpan.textContent = newSkillHour + ' часов';
+        skillHourSpan.textContent = newSkillHour + 'ч.';
 
         // Проверка на изменения и вывод в консоль
         if (oldSkillName !== newSkillName || oldSkillHour !== newSkillHour) {
@@ -142,7 +142,7 @@ function editSkill(button) {
         hourInput.remove();
         
         // Обновление текста кнопки и атрибута
-        button.textContent = 'Редактировать';
+        button.textContent = '✎';
         button.dataset.editing = "false";
 
         // Удаление зеленого цвета кнопки
@@ -153,7 +153,7 @@ function editSkill(button) {
         // Режим редактирования
         // Старое название навыка и количество часов
         const oldSkillName = skillNameSpan.textContent;
-        const oldSkillHour = skillHourSpan.textContent.replace(' часов', '');        
+        const oldSkillHour = skillHourSpan.textContent.replace('ч.', '');        
         
         // Создание полей ввода
         const nameInput = document.createElement('input');
@@ -174,7 +174,7 @@ function editSkill(button) {
         skillNameSpan.appendChild(nameInput);
         skillHourSpan.appendChild(hourInput);
 
-        button.textContent = 'Сохранить';
+        button.textContent = '✔';
         button.dataset.editing = "true";
 
         // Изменение цвета кнопки на зеленый
@@ -246,11 +246,11 @@ function getSkillTemplate(skill) {
         class="list-group-item"
     >
         <span id="skill-name" class="skills">${skill.name_skill}</span>
-        <span id="skill-hour" class="skills">${skill.hour_skill} часов</span>
+        <span id="skill-hour" class="skills">${skill.hour_skill}ч.</span>
 
         <span class="skill-actions">
-        <span id="btn-edit-skill" class="btn edit-btn btn-small btn-warning" data-index="${skill.id}" data-type="edit" onclick="editSkill(this)">Редактировать</span>
-        <span id="btn-delete-skill" class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">Удалить</span>
+        <span id="btn-edit-skill" class="btn edit-btn btn-small btn-warning" data-index="${skill.id}" data-type="edit" onclick="editSkill(this)">&#x270E;</span>
+        <span id="btn-delete-skill" class="btn btn-small btn-danger" data-index="${skill.id}" data-type="remove">&#x2716;</span>
         </span>
         </li>
 ` 
