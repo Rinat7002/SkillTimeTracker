@@ -79,13 +79,13 @@
     }
 
     .bg {
-        display: block;
-        margin-left: auto;
-        margin-right: 100px;
+        display: initial;
+        margin-left: initial;
+        margin-right: initial;
         width: 100%;
     }
 
-    label {
+    .burger-toggle-label {
         display: block;
         position: relative;
         height: 25px;
@@ -95,7 +95,7 @@
 
   
 
-    label::after, label::before, label span {
+    .burger-toggle-label::after, .burger-toggle-label::before, .burger-toggle-label span {
         position: absolute;
         width: 100%;
         height: 3px;
@@ -103,31 +103,31 @@
         transition: .3s;
     }
 
-    label::before {
+    .burger-toggle-label::before {
         content: "";
         top: 0;
     }
 
-    label::after {
+    .burger-toggle-label::after {
         content: "";
         bottom: 0;
     }
 
-    label span {
+    .burger-toggle-label span {
         top: 11px;
     }
 
-    #burger-toggle:checked ~ label::after {
+    #burger-toggle:checked ~ .burger-toggle-label::after {
         transform: rotate(45deg);
         bottom: 10px;
     }
 
-    #burger-toggle:checked ~ label::before {
+    #burger-toggle:checked ~ .burger-toggle-label::before {
         transform: rotate(-45deg);
         top: 12px;
     }
 
-    #burger-toggle:checked ~ label span {
+    #burger-toggle:checked ~ .burger-toggle-label span {
         width: 0;
         top: 12px;
     }
@@ -209,6 +209,31 @@
     #skill-hour {
         max-width: 20%;
     }
+
+    .table-dark {
+        position: absolute;
+        top: initial;
+        left: initial;
+        width: initial;
+    }
+
+    .feedback-form {
+        margin-top: 45%;
+        margin-left: initial; 
+    }
+
+    #comments {
+        width: 300px;
+    }
+
+
+
+    /* #myTable {
+        position: relative;
+
+    } */
+
+
 
 
 

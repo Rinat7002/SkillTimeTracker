@@ -100,7 +100,7 @@ margin-right: 70px;
     color: #E4DC23;
 }
 
-label {
+.burger-toggle-label {
     display: none;
 }
 
@@ -224,18 +224,26 @@ label {
     /* position: absolute; */
     /* top: 90%; */
     margin-top: -280px;
-    margin-left: 30px; 
+    margin-left: 30px;
+    /* border: 0; */
+    /* width: 48% */
     /* left: 20%; */
     /* scale: 120%; */
+ 
     /* margin: 50px; */
 }
+
+.inside-form {
+    border: none;
+  }
 
 .request-status {
     margin-left: 500px;
 }
 
 #comments {
-    width: 30%;
+    /* width: 30%; */
+    width: 400px;
     height: 100px;
 }
 
@@ -278,4 +286,31 @@ label {
 #btn-edit-skill,
 #btn-delete-skill {
     margin-left: 10px; /* Отступ между кнопками */
+}
+
+#myTable {
+    /* width: 100%; */
+    border-collapse: collapse;
+}
+#myTable caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 1.5em;
+    padding: 10px;
+}
+#myTable th, #myTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+}
+#myTable {
+    background-color: #343a40;
+    /* color: white; */
+    /* cursor: pointer; */
+}
+
+.link__tg-item {
+    display: flex;
+    align-items: center;
 }
