@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block adaptive_styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/adaptive.css')}}">
+{% endblock %}
+
 {% block content %}
     <main class="main" id="general">
             <figure>

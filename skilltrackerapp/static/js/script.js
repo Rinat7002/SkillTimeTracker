@@ -74,28 +74,42 @@ $(".hidebox h3").dblclick(function () {
 });
 
 // Изменение размеров изображений при наведении на них
-$("figure img").hover(
-    function() {
-        var currentWidth = $(this).width();
-        var currentHeight = $(this).height();
+// $("figure img").hover(
+//     function() {
+//         var currentWidth = $(this).width();
+//         var currentHeight = $(this).height();
         
-        var newWidth = currentWidth + currentWidth * 0.03;
-        var newHeight = currentHeight + currentHeight * 0.03;
+//         var newWidth = currentWidth + currentWidth * 0.03;
+//         var newHeight = currentHeight + currentHeight * 0.03;
 
-        $(this).stop().animate({
-            width: newWidth,
-            height: newHeight
-        }, "slow");
+//         $(this).stop().animate({
+//             width: newWidth,
+//             height: newHeight
+//         }, "slow");
 
-    }, function() {
-        var currentWidth = $(this).width();
-        var currentHeight = $(this).height();
+//     }, function() {
+//         var currentWidth = $(this).width();
+//         var currentHeight = $(this).height();
         
-        var newWidth = currentWidth - currentWidth * 0.03;
-        var newHeight = currentHeight - currentHeight * 0.03;
+//         var newWidth = currentWidth - currentWidth * 0.03;
+//         var newHeight = currentHeight - currentHeight * 0.03;
 
-        $(this).stop().animate({
-            width: newWidth,
-            height: newHeight
-        }, "slow");
-    });
+//         $(this).stop().animate({
+//             width: newWidth,
+//             height: newHeight
+//         }, "slow");
+//     });
+
+document.getElementById('burger-toggle').addEventListener('change', function() {
+    const navMenu = document.querySelector('.nav_menu');
+    if (this.checked) {
+        navMenu.style.left = '20px';
+        navMenu.style.right = '0';
+        navMenu.style.position = 'relative';
+    } else {
+        navMenu.style.left = '-100vh';
+        navMenu.style.right = '100vh';
+        navMenu.style.position = 'absolute';
+
+    }
+});

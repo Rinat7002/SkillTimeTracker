@@ -33,7 +33,7 @@ sendbtn.addEventListener("click", function (e) {
             let statfield = document.getElementById("statusfield");
 //            statfield.textContent = data.message;
             //statfield.textContent.bold();
-            alert(data.message);
+            alert("Ваша заявка отправлена.");
         });
     })
     .catch( error => {
